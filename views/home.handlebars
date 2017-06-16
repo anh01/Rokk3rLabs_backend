@@ -1,0 +1,49 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand abs" href="#">Node.js Video Game Store</a>
+    <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/shopping-cart">Items in cart {{totalItems}} -
+                    Total price: {{totalPrice}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h2 class="home_title">Product List</h2>
+
+<div class="container mb-5">
+    {{# if products }}
+        <ul class="list-group">
+            {{# each products }}
+
+                <li class="list-group-item">
+                    <div class="d-flex flex-row btn-block justify-content-between">
+                        <div class="p-2">
+                            <div class="justify-content-between">
+                                {{this.name}}
+                                <span class="badge badge-default badge-pill">{{this.stock}} left</span>
+                            </div>
+                            <div class="justify-content-end">
+                                <small>Price: ${{this.price}}</small>
+                            </div>
+                        </div>
+                        <div class="p-2 align-self-end">
+                            <a href="/add-item/{{this._id}}/{{this.price}}" class="btn btn-primary btn-lg"
+                               role="button">Buy</a>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{ else }}
+        <div class="alert alert-warning" role="alert">
+            There are no items left
+        </div>
+    {{/if}}
+</div>
+
